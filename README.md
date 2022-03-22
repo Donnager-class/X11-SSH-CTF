@@ -54,7 +54,7 @@ ssh -X user@<ip> -p 6000
   
  The following example is inside the secure shell of your localhost:
 ![](/images/ctf_4_1.png)
-NOTE: Your graphical environment may look diffrent from the example, but all nessacary tools will be available inside the secure shell. If you do not have this graphical output you can simply enter the command for the application in your secure shell.  
+NOTE: Your graphical environment may look different from the example, but all necessary tools will be available inside the secure shell. If you do not have this graphical output you can simply enter the command for the application in your secure shell.  
  e.g. "xterm" will bring the up your terminal.  
 
  Here is another example of a remote connection:

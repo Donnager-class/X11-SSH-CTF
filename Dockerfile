@@ -29,11 +29,17 @@ RUN sed -ri 's/^#X11DisplayOffset\s+.*/X11DisplayOffset 10/g' /etc/ssh/sshd_conf
 RUN useradd -m user
 RUN mkdir -p /home/user/.ssh
 RUN passwd -d user
+RUN touch todo.txt
+RUN echo "Reminder: Employee cannot login. Give employee new credentials=amosburton:baltimore89" >> /root/todo.txt
+RUN touch reminder.txt
+RUN echo "Reminder: Amos Burton's birthday is on June 27th. Email him happy birthday(timothybaltimore89@gmail.com)" >> /home/user/reminder.txt
 
 #Exposing SSH port and allowing DISPLAY accross SSH.
 EXPOSE 6000
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
+#RUN chmod +x /entrypoint.sh
+#ENTRYPOINT "/entrypoint.sh"
 
 #To run a Desktop GUI and start X.Org Xserver use the following:
 #_______________________________________________________________#
