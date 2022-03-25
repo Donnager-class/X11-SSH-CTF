@@ -1,5 +1,9 @@
 version: '3.3'
 services:
+  x11:
+    build:
+      context: x11
+      dockerfile: Dockerfile
   web:
     build:
       context: ./php
@@ -12,68 +16,30 @@ services:
     ports:
       - 8000:80
   db:
-    image: mysql
+    image: mysql:5.7
+    container_name: db
     command: --default-authentication-plugin=mysql_native_password
-    restart: always
     environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: mydb
+       MYSQL_ROOT_PASSWORD: mypassword
+       MYSQL_DATABASE: creds
        MYSQL_USER: user
-       MYSQL_PASSWORD: user
+       MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
     volumes:
-      - ./php:/docker-entrypoint-phpdb.data
-  adminer:
-    image: adminer
+        - ./docker/mysql/data:/var/lib/mysql:rw
+        - ./php/credentials.sql:/docker-entrypoint-initdb.d/credentials.sql:ro
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
     restart: always
     ports:
-      - 8080:8080
-    # volumes:
-    # - ./docker/mysql/data:/var/lib/mysql:rw
-    # - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
-#    db:    
-#     image: mysql:8
-#     container_name: db
-#     environment:
-#       MYSQL_ROOT_PASSWORD: my_secret_password
-#       MYSQL_DATABASE: app_db
-#       MYSQL_USER: db_user
-#       MYSQL_PASSWORD: db_user_pass
-#     ports:
-#       - "3306:3306"
-#     volumes:
-#       - dbdata:/var/lib/mysql
-#       - ./scripts/credentials.sql:/docker-entrypoint-initdb.d/login.sql
-#   phpmyadmin:
-#     image: phpmyadmin/phpmyadmin
-#     container_name: pma
-#     links:
-#       - db
-#     environment:
-#       PMA_HOST: db
-#       PMA_PORT: 3306
-#       PMA_ARBITRARY: 1
-#     restart: always
-#     ports:
-#       - 8081:80
-# volumes:
-#   dbdata:
-  #dockerfile:
-    #build: Dockerfile/.
-    #command: /bin/sh -c "entrypoint.sh"
-   
-#    image: mysql:8.0
-#    command: --default-authentication-plugin=mysql_native_password
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root
-#      MYSQL_DATABASE: credentials
-#      MYSQL_USER: devuser
-#      MYSQL_PASSWORD: devpass
-#    ports:
-#     - 6033:3306
-#    expose:
-#     - 3306
-#    volumes:
-#     - ./scripts/credentials.sql:/docker-entrypoint-initdb.d/login.sql
-#volumes:
-#  my-db:
+        - 8081:80
+volumes:
+    dbdata:

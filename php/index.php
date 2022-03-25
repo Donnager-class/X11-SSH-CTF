@@ -1,33 +1,33 @@
-<?php
-////Start php
-//$host = 'db'; //service name for docker-compose.yml
-//$user = 'devuser';
-//$password = 'devpass';
-//$db = 'test_db';
-//
-//$connection = new mysqli($host,$user,$password,$db);
-//if($connection->connect_error)
-//{
-//    echo 'connection failed' . $connection->connect_error;
-//}
-//else
-//{
-//    echo 'Successfully connected web page';
-//}
-////End of php
-?> 
-
 <html>  
 <head>  
     <title>PHP login system</title>  
-    <link rel = "stylesheet" type = "text/css" href = "style.css">   
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <style>
+        body{   
+    background-color: rgb(254, 255, 255) !important;  
+}  
+#frm{  
+    border: solid rgb(0, 0, 0) 1px;  
+    width:25%;  
+    border-radius: 2px;  
+    margin: 120px auto;  
+    background: rgb(114, 114, 114);  
+    padding: 50px;  
+}  
+#btn{  
+    color: rgb(255, 255, 255);  
+    background: rgba(0, 0, 0, 0.795);  
+    padding: 7px;  
+    margin-left: 70%;  
+}  
+    </style>
 </head>  
 <body>  
     <div id = "frm">  
         <h1>Login</h1>  
-        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
+        <form name="f1" action = "Ar!301Gf.php" onsubmit = "return validation()" method = "POST">  
             <p>  
-                <label> UserName: </label>  
+                <label> Username: </label>  
                 <input type = "text" id ="user" name  = "user" />  
             </p>  
             <p>  

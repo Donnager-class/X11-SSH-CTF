@@ -1,0 +1,6 @@
+index.php = Login Page
+De@125Lp.php = connection page(Connects database)
+Ar!301Gf.php = authentication page(Ensure login is correct)
+Uy$990In.php = About page(home page)
+Ye$148Qa.php = comment page
+Yh!115Nk.php = Upload page
