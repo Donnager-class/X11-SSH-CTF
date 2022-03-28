@@ -34,13 +34,7 @@ docker-compose build
 ```
 docker-compose up
 ``` 
-If the x11 script did not run it can be fixed by doing the following in the x11 directory. Note that it may take a while to build: 
-```
-docker build -t x11box . 
-```  
-```
-docker run -d --name x11box-active -v /data/projects:/projects -p 6000:22 x11box 
-```
+
 ---
 ## Connect to your CTF   
  
@@ -64,3 +58,33 @@ NOTE: Your graphical environment may look different from the example, but all ne
  Here is an example of a remote connection:
 ![](/images/ctf_5_1.png)
 Context: In this remote example "startxfce4" was not used, instead "xclock" was ran to provide an example, if your graphical environment did not output correctly. This proves that all applications can still be used inside the secure shell without "startxfce4".
+
+## Phase 2
+The goal of phase 2 is to identify and exploit the second service. There is an intended method to exploit the service via webshell, although there are different methods to obtain the flag.  
+ The intended method is displayed as follows:
+ ![](/images/ctf_1_2.png)
+
+## Troubleshooting
+As you know nothing is perfect and docker has its fare share of problems. I found that on some devices docker runs perfectly and on others not so much.  
+I've ruled out most of the bugs and I do have a solution for every problem I could find while cloning and running my CTF.  
+ Here is a list of problems and solutions to them:
+
+ ### X11 service failed to run script:
+ If the x11 script did not run it can be fixed by doing the following in the x11 directory. Note that it may take a while to build: 
+```
+docker build -t x11box . 
+```  
+```
+docker run -d --name x11box-active -v /data/projects:/projects -p 6000:22 x11box 
+```
+### Upload function states "permission denied":
+If you cannot upload an image to the web service due to permission denied use the following in the share directory:
+```
+sudo chmod 777 share
+```
+### Docker-compose run states ports in use:
+Your docker doesn't run and mentions ports or services in use it's most likely as the error states. To fix this close the ports and kill the processes:
+```
+sudo kill $(sudo lsof -t -i:<port number>)
+```
+Note: Make sure you know what ports you need to run because this will kill that ports process.

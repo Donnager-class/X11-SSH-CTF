@@ -379,11 +379,10 @@ make the text appear at center */
     <section class="background firstsection">
         <div class="box-main">
             <div class="firstHalf">
-                <p class="text-big">Staff reporting workspace.</p>
+                <p class="text-big">The Expanse staff page.</p>
   
                 <p class="text-small">
-                    Here you will do your montly reporting 
-                    and meet new staff members.
+				    Staff reporting workspace. Here you will conduct your montly reporting. 
                 </p>
   
                 <br>

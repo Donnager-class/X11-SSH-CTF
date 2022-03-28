@@ -1,35 +1,95 @@
-<php
-
+<?php
+if (isset($_POST["upload"])) {
+    
+    $allowed_file_extension = array(
+        "pdf",
+        "doc",
+        "jpg",
+        "jpeg",
+        "png"
+    );
+    
+    
+    $file_extension = pathinfo($_FILES["file-input"]["name"], PATHINFO_EXTENSION);
+    
+    // Validate file input to check if is not empty
+    if (! file_exists($_FILES["file-input"]["tmp_name"])) {
+        $response = array(
+            "type" => "error",
+            "message" => "Choose file to upload."
+        );
+    }    // Validate file input to check if is with valid extension
+    else if (! in_array($file_extension, $allowed_file_extension)) {
+        $response = array(
+            "type" => "error",
+            "message" => "Upload valiid files. Only doc and pdf are allowed."
+        );
+    } else {
+        $target = "/var/www/html/share/" . basename($_FILES["file-input"]["name"]);
+        if (move_uploaded_file($_FILES["file-input"]["tmp_name"], $target)) {
+            $response = array(
+                "type" => "success",
+                "message" => "You've successfully uploads your file to share"
+            );
+        } else {
+            $response = array(
+                "type" => "error",
+                "message" => "Problem in uploading file."
+            );
+        }
+    }
+}
 ?>
-<html>  
-<head>  
-    <title>About</title>  
-    <link rel = "stylesheet" type = "text/css" href = "style.css">   
-    <style>
-        body{   
-    background-color: rgb(254, 255, 255) !important;  
-}  
-#frm{  
-    border: solid rgb(0, 0, 0) 1px;  
-    width:25%;  
-    border-radius: 2px;  
-    margin: 120px auto;  
-    background: rgb(114, 114, 114);  
-    padding: 50px;  
-}  
-#btn{  
-    color: rgb(255, 255, 255);  
-    background: rgba(0, 0, 0, 0.795);  
-    padding: 7px;  
-    margin-left: 70%;  
-}  
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Upload</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        .wrapper{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .pt{
+            padding-top: 15px;
+        }
     </style>
-</head>  
+</head>
 <body>
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select Image File to Upload:
-    <input type="file" name="file">
-    <input type="submit" name="submit" value="Upload">
-</form>
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                <h2>Submit Report Into Share</h2>
+                </div>
+                <form id="frm-upload" action="Yh!115Nk.php" name='img' method="post" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div>Choose file:</div>
+                        <div class="pt">
+                            <input type="file" class="file-input" name="file-input">
+                        </div>
+                    </div>
+
+                    <div class="button-row pt">
+                        <input type="submit" class="btn btn-primary" id="btn-submit" name="upload" value="Upload">
+                        <a href="index.php" class="btn btn-default">Cancel</a>
+                    </div>
+                </form>
+                <div class="pt">
+                    <?php if(!empty($response)) { ?>
+                        <div class="alert alert-success response <?php echo $response["type"]; ?>"><?php echo $response["message"]; ?></div>
+                    <?php }?>
+                </div>
+            <div>
+        </div>
+    <div>
 </body>
 </html>
