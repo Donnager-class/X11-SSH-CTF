@@ -9,8 +9,18 @@ The goal is to obtain the "flag"(you will know it when you see it.). It is recom
  
 --- 
 ## The scenario:
- You connect to a company's local network while visiting. Upon talking to one of the staff members, they briefly mentioned that access controlled is disabled. Their Desktop environment for their employees to work on has been configured lazily. Exploit their staff's working environment to gain full control of their service. 
- (Amos, Burton is the name of the person you were talking to.)
+ You are in a organisation’s office. Upon talking to one of the staff
+members, who introduced himself as Amos Burton, he briefly
+complained about their SSH service. He stated that their command
+to run their desktop environment is a hassle (Using “startxfce4”). He
+then listed the benefit that access controlled is disabled and he can
+work from any machine remotely.
+
+---
+## The Task 
+ The organisation's desktop environment for their employees
+has been configured lazily. Exploit their staff's working
+environment to gain full control of their service.
 
 ---
 ## CTF setup guide 

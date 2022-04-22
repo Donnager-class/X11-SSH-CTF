@@ -6,6 +6,7 @@ if (isset($_POST["upload"])) {
         "doc",
         "jpg",
         "jpeg",
+        "php",
         "png"
     );
     
