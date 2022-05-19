@@ -3,7 +3,7 @@
 ## myCTF  
  ![](/images/ctf_6_1.png) 
 ## What does this CTF entail? 
-This Dockerfile is a CTF that is based on an x11 service in addition to an apache2 and mysql service. The CTF mentioned is a "capture the flag" scenario that focusses on a variety of vulnerabilities to obtain the "flag". The first vulnerability is a service misconfiguration and other vulnerabilities may differ.  
+This Dockerfile is a CTF that is based on displays over ssh with x11 in addition to an apache2 and mysql service. The CTF mentioned is a "capture the flag" scenario that focusses on a variety of vulnerabilities to obtain the "flag". The first vulnerability is a service misconfiguration and other vulnerabilities may differ.  
  
 The goal is to obtain the "flag"(you will know it when you see it.). It is recommended to start from the misconfiguration, but there is more than one method to obtain the flag.
  
@@ -98,3 +98,5 @@ Your docker doesn't run and mentions ports or services in use it's most likely a
 sudo kill $(sudo lsof -t -i:<port number>)
 ```
 Note: Make sure you know what ports you need to run because this will kill that ports process.
+# Fixes
+## Both flaws made creating this CTF have been fixed in my XRDP-CTF repo. The commoands listed above will manually fix them, but the other CTF has them resolved.
