@@ -99,4 +99,4 @@ sudo kill $(sudo lsof -t -i:<port number>)
 ```
 Note: Make sure you know what ports you need to run because this will kill that ports process.
 # Fixes
-## Both flaws made creating this CTF have been fixed in my XRDP-CTF repo. The commoands listed above will manually fix them, but the other CTF has them resolved.
+## Both flaws made creating this CTF have been fixed in my XRDP-CTF repo. The commands listed above will manually fix them, but the other CTF has them resolved.
