@@ -26,12 +26,12 @@ environment to gain full control of their service.
 ## CTF setup guide 
 Firstly, clone the repository to your terminal: 
 ```
-git clone https://gitlab.com/thephoenix2022/projecta1.git 
+git clone https://github.com/Donnager-class/X11-SSH-CTF.git 
 ```
 
 Go to the repository: 
 ```
-cd projecta1/ 
+cd X11-SSH-CTF/ 
 ```  
 Set the service misconfiguration before running your container:  
 ```
